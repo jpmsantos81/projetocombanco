@@ -37,3 +37,13 @@ def verificar_token(
         ) from erro
     except jwt.InvalidTokenError as erro:
         raise HTTPException(status_code=401, detail="Token inválido.") from erro
+
+
+# Exige que o token autenticado pertença a um administrador
+def verificar_admin(payload: dict[str, Any] = Depends(verificar_token)) -> dict[str, Any]:
+    if payload.get("tipo") != "admin":
+        raise HTTPException(
+            status_code=403,
+            detail="Acesso restrito a administradores.",
+        )
+    return payload
