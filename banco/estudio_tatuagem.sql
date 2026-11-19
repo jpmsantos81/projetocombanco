@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18/11/2026 às 02:14
+-- Tempo de geração: 19/11/2026 às 06:14
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -46,8 +46,11 @@ CREATE TABLE `agendamento` (
 --
 
 INSERT INTO `agendamento` (`idagendamento`, `idcliente`, `idtatuador`, `dataagendamento`, `horaagendamento`, `descricaotatuagem`, `desenhoaprovado`, `valortatuagem`, `status`) VALUES
-(1, 1, 1, '2025-05-10', '14:00:00', 'Mandala no braço', NULL, 350.00, 'pendente'),
-(2, 2, 2, '2025-05-11', '10:00:00', 'Rosa aquarela no ombro', NULL, 200.00, 'pendente');
+(1, 1, 1, '2025-05-10', '14:00:00', 'gatos e cachorros', '1_doisgatps e dois cachorros.webp', 350.00, 'confirmado'),
+(2, 2, 2, '2025-05-11', '10:00:00', 'gatinho', '2_gatinho.jpeg', 200.00, 'pendente'),
+(3, 1, 1, '2026-11-30', '03:31:00', 'Uma Fenix', '3_fenix.png', 200.00, 'pendente'),
+(4, 2, 3, '2026-11-30', '06:44:00', 'O tattu', '4_Tatu tatuador de boné preto.png', 200.00, 'pendente'),
+(5, 1, 1, '2026-11-30', '06:48:00', 'Desenho do papel que o cliente irá levar', NULL, 120.00, 'pendente');
 
 -- --------------------------------------------------------
 
@@ -71,7 +74,8 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`idcliente`, `nome`, `cpf`, `telefone`, `datacadastro`, `cidade`, `uf`) VALUES
 (1, 'Ana Silva', '44444444444', '11988880001', '2026-10-10', 'São Paulo', 'SP'),
-(2, 'Bruno Costa', '55555555555', '31988880002', '2024-03-22', 'Belo Horizonte', 'MG');
+(2, 'Bruno Costa', '55555555555', '31988880002', '2024-03-22', 'Belo Horizonte', 'MG'),
+(25, 'Jones', '11223434343', '11999999999', '2026-11-19', 'Barueri', 'SP');
 
 -- --------------------------------------------------------
 
@@ -183,7 +187,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idusuario`, `nome`, `email`, `senha`, `tipo`, `idcliente`) VALUES
 (1, 'Administrador', 'admin@estudio.com', '$2b$12$ekvDtmkXtBwtjRIur5mAQ.z60lijTCpjfYu1i9JYmOzFwNzPKpDJq', 'admin', NULL),
-(2, 'joao', 'joao@estudio.com', '$2b$12$CX66.TSgz.Hl1vW0RNAWeuUS/vgJTX2J0iZLrTHI1oa5pvrLDrlla', 'funcionario', NULL);
+(2, 'joao', 'joao@estudio.com', '$2b$12$CX66.TSgz.Hl1vW0RNAWeuUS/vgJTX2J0iZLrTHI1oa5pvrLDrlla', 'funcionario', NULL),
+(3, 'João Pedro Miranda Santos', 'joo@estudio.com', '$2b$12$Sk86syYJ164/af1DiC5S5.JanOO7YFoZb8G8jJuxrx.yzlsQYktsm', 'funcionario', NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -247,13 +252,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `agendamento`
 --
 ALTER TABLE `agendamento`
-  MODIFY `idagendamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idagendamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `estilo`
@@ -277,7 +282,7 @@ ALTER TABLE `tatuador`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restrições para tabelas despejadas
