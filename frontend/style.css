@@ -1,0 +1,68 @@
+body{
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+nav a:hover{
+    color: #ffc107 !important;
+}
+.btn-sair {
+    background-color: #ffc107;
+    color: black;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-sair:hover {
+    color: #ffc107;
+    background-color: #212121;
+    border: 1px solid #ffc107;
+}
+
+.btn-tattu {
+    background-color: #ffc107;
+    color: #fff;
+    border: 1px solid #ffc107;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-tattu:hover {
+    background-color: #d7a62c;
+    border-color: #946c08;
+    color: #fff;
+}
+
+.btn-tattu-secondary {
+    background-color: #212121;
+    color: #ffc107;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-tattu-secondary:hover {
+    background-color: #ffc107;
+    color: #212121;
+}
+
+.table {
+    border: 1px solid #212121;
+}
+
+.table thead th {
+    background-color: #212121;
+    color: #ffc107;
+    border-color: #444;
+}
+
+.table tbody td {
+    background-color: #212121;
+    color: #fff;
+    border-color: #444;
+    transition: 0.2s;
+}
+
+.table tbody tr:hover td {
+    background-color: #ffc107;
+    color: #212121;
+}

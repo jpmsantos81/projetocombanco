@@ -78,6 +78,23 @@ async function listarAgendamentos() {
   })
 }
 
+async function enviarDesenho(idAgendamento) {
+  const arquivo = document.getElementById('arquivo-desenho').files[0]
+  if (!arquivo) return
+
+  const dados = new FormData()
+  dados.append('arquivo', arquivo)
+
+  const resposta = await fetchAutenticado(`${API}/agendamentos/${idAgendamento}/desenho`, {
+    method: 'POST',
+    body: dados
+  })
+
+  if (!resposta.ok) {
+    throw new Error('Não foi possível enviar o desenho.')
+  }
+}
+
 listarAgendamentos()   // essa linha já existia — confira se ela continua aqui depois de colar a função acima
 
 // ─── Cadastrar e atualizar agendamentos ───
@@ -100,22 +117,47 @@ formAgendamento.addEventListener('submit', async (e) => {
 
   const idAgendamento = formAgendamento.dataset.idAgendamento
 
-  if (idAgendamento) {
-    await fetchAutenticado(`${API}/agendamentos/${idAgendamento}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(agendamento)
-    })
-  } else {
-    await fetchAutenticado(`${API}/agendamentos`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(agendamento)
-    })
-  }
+  try {
+    let idSalvo = idAgendamento
 
-  limparFormulario()
-  listarAgendamentos()
+    if (idAgendamento) {
+      const resposta = await fetchAutenticado(`${API}/agendamentos/${idAgendamento}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(agendamento)
+      })
+
+      if (!resposta.ok) {
+        throw new Error('Não foi possível atualizar o agendamento.')
+      }
+    } else {
+      const resposta = await fetchAutenticado(`${API}/agendamentos`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(agendamento)
+      })
+
+      if (!resposta.ok) {
+        throw new Error('Não foi possível cadastrar o agendamento.')
+      }
+
+      const resultado = await resposta.json()
+      if (!resultado.idagendamento) {
+        throw new Error('A API não retornou o ID do agendamento cadastrado.')
+      }
+
+      idSalvo = resultado.idagendamento
+      formAgendamento.dataset.idAgendamento = idSalvo
+      botaoSubmit.textContent = 'Tentar novamente'
+    }
+
+    await enviarDesenho(idSalvo)
+    limparFormulario()
+    await listarAgendamentos()
+  } catch (erro) {
+    console.error('Erro ao salvar agendamento ou enviar desenho:', erro)
+    alert(erro instanceof Error ? erro.message : 'Não foi possível concluir o agendamento.')
+  }
 })
 
 // ─── Abre os dados do agendamento no formulário para edição ───

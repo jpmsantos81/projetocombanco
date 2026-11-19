@@ -1,41 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <title>Dashboard — Estúdio de Tatuagem</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <nav class="navbar navbar-dark bg-dark mb-4">
+  <nav class="navbar navbar-dark bg-dark mb-4 p-1">
     <div class="container">
-      <span class="navbar-brand">Estúdio de Tatuagem</span>
-      <button onclick="sair()" class="btn btn-outline-light btn-sm">Sair</button>
+
+      <a href="dashboard.html" class="text-decoration-none">
+        <div class="d-flex align-items-center gap-2">
+          <img src="img/tattu.png" alt="Logo" width="70">
+          <span class="navbar-brand mb-0 text-warning fw-bold">Tattu<span class="text-white">Studio</span></span>
+        </div>
+      </a>
+
+      <button onclick="sair()" class="btn btn-sm btn-sair">Sair</button>
+
     </div>
   </nav>
 
-  <div class="container">
-    <h1 class="mb-4">Painel</h1>
-    <div class="row g-3">
+  <div class="container py-4">
+    <h1 class="mb-5 fw-bold text-center">PAINEL PRINCIPAL</h1>
+
+    <h5 class="mb-3">Gerenciamento</h5>
+    <div class="row g-3 mb-5">
       <div class="col-md-4">
-        <a href="clientes.html" class="btn btn-primary w-100 py-3">Clientes</a>
+        <a href="clientes.html" class="btn btn-tattu w-100 py-4">Clientes</a>
       </div>
       <div class="col-md-4">
-        <a href="tatuadores.html" class="btn btn-primary w-100 py-3">Tatuadores</a>
+        <a href="tatuadores.html" class="btn btn-tattu w-100 py-4">Tatuadores</a>
       </div>
       <div class="col-md-4">
-        <a href="agendamentos.html" class="btn btn-primary w-100 py-3">Agendamentos</a>
-      </div>
-      <div class="col-md-4">
-        <a href="senioridade.html" class="btn btn-secondary w-100 py-3">Senioridade</a>
-      </div>
-      <div class="col-md-4">
-        <a href="estilos.html" class="btn btn-secondary w-100 py-3">Estilos</a>
-      </div>
-      <div class="col-md-4">
-        <a href="cadastro.html" class="btn btn-secondary w-100 py-3">Novo Funcionário</a>
+        <a href="agendamentos.html" class="btn btn-tattu w-100 py-4">Agendamentos</a>
       </div>
     </div>
+
+    <h5 class="mb-3">Configurações</h5>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <a href="senioridade.html" class="btn btn-tattu-secondary w-100 py-4">Senioridade</a>
+      </div>
+      <div class="col-md-4">
+        <a href="estilos.html" class="btn btn-tattu-secondary w-100 py-4">Estilos</a>
+      </div>
+      <div class="col-md-4">
+        <a href="cadastro.html" class="btn btn-tattu-secondary w-100 py-4">Novo Funcionário</a>
+      </div>
+    </div>
+
   </div>
 
   <script src="js/auth.js"></script>
@@ -44,4 +62,5 @@
   </script>
 
 </body>
+
 </html>
